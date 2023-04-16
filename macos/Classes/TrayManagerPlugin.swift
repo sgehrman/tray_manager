@@ -136,7 +136,7 @@ public class TrayManagerPlugin: NSObject, FlutterPlugin, NSMenuDelegate {
         let isTemplate: Bool =  args["isTemplate"] as! Bool;
         let iconPosition: String =  args["iconPosition"] as! String;
         
-        let image = NSImage(contentsOfFile: iconPath!)
+        let image = NSImage(contentsOfFile: iconPath)
         image!.size = NSSize(width: 18, height: 18)
         image!.isTemplate = isTemplate
         
