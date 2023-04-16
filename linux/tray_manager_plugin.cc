@@ -123,7 +123,11 @@ static FlMethodResponse* set_icon(TrayManagerPlugin* self, FlValue* args) {
   }
 
   app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
-  app_indicator_set_icon(indicator, icon_path);
+
+  // we are setting the same path again, but that doesn't trigger a rebuild
+  // so we set the third parameter to random to trigger a rebuild
+  // app_indicator_set_icon(indicator, icon_path);
+  app_indicator_set_icon_full(indicator, icon_path, id);
 
   return FL_METHOD_RESPONSE(
       fl_method_success_response_new(fl_value_new_bool(true)));
