@@ -1,9 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 import 'dart:ui';
 import 'package:menu_base/menu_base.dart';
-import 'package:path/path.dart' as path;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -95,17 +92,9 @@ class TrayManager {
     bool isTemplate = false, // macOS only
     TrayIconPositon iconPosition = TrayIconPositon.left, // macOS only
   }) async {
-    ByteData imageData = await rootBundle.load(iconPath);
-    String base64Icon = base64Encode(imageData.buffer.asUint8List());
-
     final Map<String, dynamic> arguments = {
       "id": shortid.generate(),
-      'iconPath': path.joinAll([
-        path.dirname(Platform.resolvedExecutable),
-        'data/flutter_assets',
-        iconPath,
-      ]),
-      'base64Icon': base64Icon,
+      'iconPath': iconPath,
       'isTemplate': isTemplate,
       'iconPosition': iconPosition.name,
     };

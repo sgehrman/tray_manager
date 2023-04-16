@@ -132,12 +132,11 @@ public class TrayManagerPlugin: NSObject, FlutterPlugin, NSMenuDelegate {
     
     public func setIcon(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         let args:[String: Any] = call.arguments as! [String: Any]
-        let base64Icon: String =  args["base64Icon"] as! String;
+        let iconPath: String =  args["iconPath"] as! String;
         let isTemplate: Bool =  args["isTemplate"] as! Bool;
         let iconPosition: String =  args["iconPosition"] as! String;
         
-        let imageData = Data(base64Encoded: base64Icon, options: .ignoreUnknownCharacters)
-        let image = NSImage(data: imageData!)
+        let image = NSImage(contentsOfFile: iconPath!)
         image!.size = NSSize(width: 18, height: 18)
         image!.isTemplate = isTemplate
         
