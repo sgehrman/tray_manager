@@ -5,7 +5,7 @@
 #include <sys/utsname.h>
 
 #ifdef HAVE_AYATANA
-#include <libayatana-appindicator-glib/ayatana-appindicator.h>
+#include <libayatana-appindicator/app-indicator.h>
 #else
 #include <libappindicator/app-indicator.h>
 #endif
