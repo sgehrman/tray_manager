@@ -20,7 +20,7 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 
-pkg_check_modules(APPINDICATOR IMPORTED_TARGET ayatana-appindicator3-0.1-glib)
+pkg_check_modules(APPINDICATOR IMPORTED_TARGET ayatana-appindicator3-0.1)
 if(APPINDICATOR_FOUND)
   target_compile_definitions(${PLUGIN_NAME} PRIVATE HAVE_AYATANA)
 else()
